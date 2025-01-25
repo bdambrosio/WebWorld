@@ -51,20 +51,30 @@ const App = () => {
     const [email, setEmail] = useState('');
     const [submitStatus, setSubmitStatus] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // For now, just log the email to console
-        console.log('Email submitted:', email);
-        
-        // Show success message
-        setSubmitStatus("Thanks! We'll notify you when WebWorld is available.");
-        setEmail('');
-        
-        // Close dialog after delay
-        setTimeout(() => {
-            setShowDialog(false);
-            setSubmitStatus('');
-        }, 3000);
+        try {
+            const response = await fetch('https://formspree.io/f/xdkakrvr', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email }),
+            });
+            
+            if (response.ok) {
+                setSubmitStatus('Thanks! We\'ll notify you when WebWorld is available.');
+                setEmail('');
+                setTimeout(() => {
+                    setShowDialog(false);
+                    setSubmitStatus('');
+                }, 3000);
+            } else {
+                setSubmitStatus('Oops! Please try again.');
+            }
+        } catch (error) {
+            setSubmitStatus('Oops! Please try again.');
+        }
     };
 
     return (
@@ -138,9 +148,37 @@ const App = () => {
                 <section className="cta-section">
                     <h2>Experience the Future of AI Storytelling</h2>
                     <p>Join our early access program to explore rich narratives emerging from true AI cognition</p>
-                    <button className="cta-button">Request Access</button>
+                    <button 
+                        className="cta-button"
+                        onClick={() => setShowDialog(true)}
+                    >
+                        Request Access
+                    </button>
                 </section>
             </main>
+
+            {showDialog && (
+                <div className="email-dialog-overlay">
+                    <div className="email-dialog">
+                        <h3>Request Early Access</h3>
+                        <p>Enter your email to be notified when WebWorld is available</p>
+                        <form onSubmit={handleSubmit}>
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="Your email address"
+                                required
+                            />
+                            <div className="dialog-buttons">
+                                <button type="submit">Submit</button>
+                                <button type="button" onClick={() => setShowDialog(false)}>Cancel</button>
+                            </div>
+                        </form>
+                        {submitStatus && <p className="status-message">{submitStatus}</p>}
+                    </div>
+                </div>
+            )}
 
             <footer className="footer">
                 <p>Early access program - Limited availability</p>
