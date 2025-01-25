@@ -1,38 +1,141 @@
-.App {
-  text-align: center;
+/* Base styles */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #1a1a1a;
+    color: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Layout */
+.landing-page {
+    min-height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Header */
+.header {
+    text-align: center;
+    padding: 4rem 0;
 }
 
-.App-link {
-  color: #61dafb;
+.header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.subtitle {
+    font-size: 1.25rem;
+    color: #cccccc;
+}
+
+/* Hero Section */
+.hero-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+    .hero-section {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.hero-image {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.hero-text h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.featured-scenario {
+    background-color: #333;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .features-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.feature-card {
+    background-color: #333;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.feature-icon {
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 1rem;
+}
+
+.feature-icon.blue { color: #60a5fa; }
+.feature-icon.green { color: #34d399; }
+.feature-icon.purple { color: #a78bfa; }
+.feature-icon.yellow { color: #fcd34d; }
+
+/* CTA Section */
+.cta-section {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.cta-button {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.cta-button:hover {
+    background-color: #1d4ed8;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+}
+
+/* Interface Preview */
+.interface-preview {
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.interface-image {
+    max-width: 100%;
+    border-radius: 8px;
 }
