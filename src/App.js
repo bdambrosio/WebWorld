@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Brain, Users, Eye, MessageCircle } from 'lucide-react';
 import './App.css';
 
@@ -47,6 +47,26 @@ It is a early morning on what seems like it will be a warm, sunny day.
 """)`;
 
 const App = () => {
+    const [showDialog, setShowDialog] = useState(false);
+    const [email, setEmail] = useState('');
+    const [submitStatus, setSubmitStatus] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // For now, just log the email to console
+        console.log('Email submitted:', email);
+        
+        // Show success message
+        setSubmitStatus("Thanks! We'll notify you when WebWorld is available.");
+        setEmail('');
+        
+        // Close dialog after delay
+        setTimeout(() => {
+            setShowDialog(false);
+            setSubmitStatus('');
+        }, 3000);
+    };
+
     return (
         <div className="landing-page">
             <header className="header">

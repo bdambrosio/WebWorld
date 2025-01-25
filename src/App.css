@@ -68,9 +68,9 @@ body {
 
 .featured-scenario {
     background: linear-gradient(to bottom, #2a2a2a, #222);
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 8px;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
 }
 
 .featured-scenario h3 {
@@ -171,7 +171,7 @@ body {
     height: 400px;
     overflow-y: auto;
     font-family: 'Consolas', 'Monaco', monospace;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     line-height: 1.4;
     border: 1px solid #333;
 }
